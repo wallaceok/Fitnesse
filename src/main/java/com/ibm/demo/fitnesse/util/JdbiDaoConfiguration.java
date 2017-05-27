@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 
 import com.ibm.demo.fitnesse.config.FitnesseConfiguration;
 
-import oracle.jdbc.pool.OracleDataSource;
+//import oracle.jdbc.pool.OracleDataSource;
+
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 @Component
 public class JdbiDaoConfiguration {
@@ -22,12 +24,12 @@ public class JdbiDaoConfiguration {
 		
 		if(dbi == null){
 			
-			OracleDataSource oracleDatasource = new OracleDataSource();
-		    oracleDatasource.setURL(fitnesseConfiguration.getDbUrl());
-		    oracleDatasource.setUser(fitnesseConfiguration.getDbUser());
-		    oracleDatasource.setPassword(fitnesseConfiguration.getDbPassword());
+			MysqlDataSource mysqlDatasource = new MysqlDataSource();
+		    mysqlDatasource.setURL(fitnesseConfiguration.getDbUrl());
+		    mysqlDatasource.setUser(fitnesseConfiguration.getDbUser());
+		    mysqlDatasource.setPassword(fitnesseConfiguration.getDbPassword());
 			
-		    dbi = new DBI(oracleDatasource); 
+		    dbi = new DBI(mysqlDatasource); 
 		}
 		
 	    return dbi;
